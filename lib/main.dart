@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fwc_album_app/app/core/config/env/env.dart';
-import 'package:fwc_album_app/fws_album_app.dart';
+import 'package:fwc_album_app/fwc_album_app.dart';
 
 Future<void> main() async {
   await Env.instance.load();
 
-  runApp(const FwsAlbumApp());
+  runApp(FwcAlbumApp());
 }

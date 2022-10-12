@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:fwc_album_app/app/core/config/env/env.dart';
+import 'package:fwc_album_app/app/core/rest/interceptors/auth_interceptor.dart';
 
 class CustomDio extends DioForNative {
+  final _authInterceptor = AuthInterceptor();
+
   CustomDio()
       : super(
           BaseOptions(
@@ -12,11 +15,18 @@ class CustomDio extends DioForNative {
           ),
         ) {
     interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-    ));
+        requestBody: true, responseBody: true, requestHeader: true));
   }
 
-  CustomDio auth() => this;
-  CustomDio unAuth() => this;
+  CustomDio auth() {
+    interceptors.add(_authInterceptor);
+
+    return this;
+  }
+
+  CustomDio unAuth() {
+    interceptors.remove(_authInterceptor);
+
+    return this;
+  }
 }
