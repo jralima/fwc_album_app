@@ -7,7 +7,8 @@ import 'package:fwc_album_app/app/core/ui/theme/theme_config.dart';
 import 'package:fwc_album_app/app/pages/auth/login/login_route.dart';
 import 'package:fwc_album_app/app/pages/auth/register/register_route.dart';
 import 'package:fwc_album_app/app/pages/home/home_route.dart';
-import 'package:fwc_album_app/app/pages/my_stickers/my_sticker_page.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/my_stickers_page.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/my_stickers_route.dart';
 import 'package:fwc_album_app/app/pages/splash/splash_route.dart';
 import 'package:fwc_album_app/app/repository/auth/auth_repository.dart';
 import 'package:fwc_album_app/app/repository/auth/auth_repository_impl.dart';
@@ -35,7 +36,7 @@ class FwcAlbumApp extends StatelessWidget {
           '/home': (context) => const HomeRoute(),
           '/auth/login': (context) => const LoginRoute(),
           '/auth/register': (context) => const RegisterRoute(),
-          '/my-stickers': (context) => const MyStickerPage(),
+          '/my-stickers': (context) => const MyStickersRoute(),
         },
       ),
     );

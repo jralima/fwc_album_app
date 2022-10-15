@@ -31,7 +31,7 @@ class RegisterPresenterImpl implements RegisterPresenter {
       await authRepository.register(registerUserModel);
       _view.registerSuccess();
     } catch (e, s) {
-      log('Erro ao cadastrar usuário', error: e, stackTrace: s);
+      log('Erro ao cadastrar usuario', error: e, stackTrace: s);
       _view.registerError();
     }
   }

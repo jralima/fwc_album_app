@@ -67,7 +67,7 @@ class _HomePageState extends HomeViewImpl {
                           percent: user?.totalCompletePercent ?? 0,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           '${user?.totalStickers ?? 0} figurinhas',
