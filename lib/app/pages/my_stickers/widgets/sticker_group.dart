@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
 import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/models/groups_stickers.dart';
 import 'package:fwc_album_app/app/models/user_sticker_model.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/presenter/my_stickers_presenter.dart';
 
 class StickerGroup extends StatelessWidget {
   final GroupsStickers group;
@@ -101,7 +103,6 @@ class _Sticker extends StatelessWidget {
   final String countryCode;
 
   const _Sticker({
-    super.key,
     required this.stickerNumber,
     required this.sticker,
     required this.countryName,
@@ -111,7 +112,16 @@ class _Sticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        final presenter = context.get<MyStickersPresenter>();
+        await Navigator.of(context).pushNamed('/sticker-detail', arguments: {
+          'countryCode': countryCode,
+          'stickerNumber': stickerNumber,
+          'countryName': countryName,
+          'stickerUser': sticker,
+        });
+        presenter.refresh();
+      },
       child: Container(
         color: sticker != null ? context.colors.primary : context.colors.grey,
         child: Column(
@@ -125,7 +135,7 @@ class _Sticker extends StatelessWidget {
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.all(2),
                 child: Text(
-                  stickerNumber,
+                  '${sticker?.duplicate ?? 0}',
                   style: context.textStyles.textSecundaryFontMedium.copyWith(
                     color: context.colors.yellow,
                   ),
@@ -139,7 +149,7 @@ class _Sticker extends StatelessWidget {
               ),
             ),
             Text(
-              '${sticker?.duplicate ?? 0}',
+              stickerNumber,
               style: context.textStyles.textSecundaryFontExtraBold.copyWith(
                 color: sticker != null ? Colors.white : Colors.black,
               ),

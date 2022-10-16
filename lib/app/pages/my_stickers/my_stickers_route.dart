@@ -12,9 +12,15 @@ class MyStickersRoute extends FlutterGetItPageRoute {
   @override
   List<Bind<Object>> get bindings => [
         Bind.lazySingleton<StickersRepository>(
-            (i) => StickersRepositoryImpl(dio: i())),
+          (i) => StickersRepositoryImpl(
+            dio: i(),
+          ),
+        ),
         Bind.lazySingleton<MyStickersPresenter>(
-            (i) => MyStickersPresenterImpl(stickersRepository: i())),
+          (i) => MyStickersPresenterImpl(
+            stickersRepository: i(),
+          ),
+        ),
       ];
 
   @override

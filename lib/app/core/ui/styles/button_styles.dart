@@ -45,7 +45,6 @@ class ButtonStyles {
       );
 
   ButtonStyle get primaryOutlineButton => OutlinedButton.styleFrom(
-        backgroundColor: ColorsApp.instance.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
